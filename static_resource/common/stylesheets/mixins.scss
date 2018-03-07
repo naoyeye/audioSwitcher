@@ -1,0 +1,88 @@
+@mixin clearfix {
+  zoom: 1;
+  &:before,
+  &:after {
+    display: table;
+    content: "";
+  }
+  &:after {
+    clear: both;
+  }
+}
+
+@mixin grid($col, $horizon:10px) {
+  .col-#{$col} {
+    float: left;
+    box-sizing: border-box;
+    width: 100 / $col * 1%;
+    padding-left: $horizon;
+    padding-right: $horizon;
+  }
+}
+
+%product-card-list {
+  @include clearfix();
+  @include grid(2);
+  @include grid(3);
+  @include grid(4);
+  @include grid(5);
+  margin-left: -10px;
+  margin-right: -10px;
+}
+
+%share-button {
+  display: block;
+  position: relative;
+  z-index: 1;
+  padding-left: 25px;
+  line-height: 20px;
+  margin-bottom: 10px;
+  color: $gray;
+
+  &:before {
+    content: '';
+    display: block;
+    position: absolute;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    width: 20px;
+    height: 20px;
+    background-image: url(/pics/share-btns.png);
+    background-repeat: no-repeat;
+  }
+}
+
+// Rounding decimals in Sass
+// https://gist.github.com/terkel/4373420
+@function decimal-round ($number, $digits: 0, $mode: round) {
+  $n: 1;
+  // $number must be a number
+  @if type-of($number) != number {
+    @warn '#{ $number } is not a number.';
+    @return $number;
+  }
+  // $digits must be a unitless number
+  @if type-of($digits) != number {
+    @warn '#{ $digits } is not a number.';
+    @return $number;
+  } @else if not unitless($digits) {
+    @warn '#{ $digits } has a unit.';
+    @return $number;
+  }
+  @if $digits > 0 {
+    @for $i from 1 through $digits {
+      $n: $n * 10;
+    }
+  }
+  @if $mode == round {
+    @return round($number * $n) / $n;
+  } @else if $mode == ceil {
+    @return ceil($number * $n) / $n;
+  } @else if $mode == floor {
+    @return floor($number * $n) / $n;
+  } @else {
+    @warn '#{ $mode } is undefined keyword.';
+    @return $number;
+  }
+}

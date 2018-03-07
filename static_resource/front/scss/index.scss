@@ -1,0 +1,68 @@
+/*
+* @Author: hanjiyun
+* @Date:   2018-03-07 21:57:51
+* @Last Modified by:   hanjiyun
+* @Last Modified time: 2018-03-08 01:53:07
+*/
+
+@import "./../../common/stylesheets/variables";
+
+html,
+body {
+  height: 100%;
+}
+
+#app {
+  height: 100%;
+  background: $smoke-light;
+}
+
+#handler-wrap {
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  width: 50%;
+  background: $smoke;
+  // transform: translate3d(0, 0, 0);
+}
+
+
+#handler {
+  display: block;
+  width: 4px;
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  background: $red;
+  cursor: col-resize;
+
+  &:after {
+    content: '';
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    background: $white;
+    left: 50%;
+    top: 50%;
+    border-radius: 50%;
+    box-shadow: 0 0 2px 0 rgba(0,0,0, .3);
+    transform: translate3d(-50%, -50%, 0);
+  }
+}
+
+#left {
+  position: absolute;
+  top: 10px;
+  right: 4px;
+}
+
+
+
+#right {
+  position: absolute;
+  top: 10px;
+  left: 4px;
+}
+

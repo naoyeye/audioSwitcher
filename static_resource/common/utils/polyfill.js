@@ -1,0 +1,15 @@
+// 替换babel-core/polyfill
+// 用到的es6属性再添加
+import 'core-js/modules/es6.object.assign'
+import 'core-js/modules/es6.object.keys'
+import 'core-js/modules/es6.array.from'
+import 'core-js/modules/es6.array.find'
+import 'core-js/modules/es6.array.find-index'
+import 'core-js/modules/es6.array.reduce'
+import 'core-js/modules/es6.array.reduce-right'
+import 'core-js/modules/es7.array.includes'
+import 'core-js/modules/es6.promise'
+import 'core-js/modules/es6.map'
+import 'core-js/modules/es6.set'
+import 'core-js/modules/es6.string.starts-with'
+import 'core-js/modules/es6.string.ends-with'
