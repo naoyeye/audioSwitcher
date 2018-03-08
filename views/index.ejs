@@ -1,20 +1,27 @@
 <!DOCTYPE HTML>
 <html>
   <head>
-    <title>首页</title>
+    <meta charset="utf-8">
+    <title>NO.XX期 - 测试 | 京 & 京 自由击</title>
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-touch-fullscreen" content="yes" />
+    <meta name="format-detection" content="telephone=no"/>
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent"/>
     <link rel="stylesheet" href="/dest/common.css">
     <link rel="stylesheet" href="/css/index.css">
+    <link rel="icon" href="https://rm-content.s3.amazonaws.com/5786e7e271ace38e2c22bcbb/upload-317e4340-de14-11e7-a9f4-b74eb9b98af5_144.png" type="image/png"/>
   </head>
   <body>
     <div id="app">
       <div id="handler-wrap">
-        <div id="handler">
-          <div id="left">0</div>
-          <div id="right">0</div>
-        </div>
+        <div id="handler"></div>
       </div>
-      <audio autoplay src="/audio/left.mp3"></audio>
-      <audio autoplay src="/audio/right.mp3"></audio>
+      <audio id="left-audio"  src="/audio/left.mp3"></audio>
+      <audio id="right-audio" src="/audio/right.mp3"></audio>
+      <div id="stop-play-btn" class="playing">
+        <i class="icon-playing"></i>
+        <i class="icon-paused"></i>
+      </div>
     </div>
 
 

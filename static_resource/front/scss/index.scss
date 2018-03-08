@@ -2,7 +2,7 @@
 * @Author: hanjiyun
 * @Date:   2018-03-07 21:57:51
 * @Last Modified by:   hanjiyun
-* @Last Modified time: 2018-03-08 01:53:07
+* @Last Modified time: 2018-03-08 13:08:32
 */
 
 @import "./../../common/stylesheets/variables";
@@ -33,7 +33,7 @@ body {
   width: 4px;
   position: absolute;
   top: 0;
-  right: 0;
+  right: -2px;
   bottom: 0;
   background: $red;
   cursor: col-resize;
@@ -50,6 +50,10 @@ body {
     box-shadow: 0 0 2px 0 rgba(0,0,0, .3);
     transform: translate3d(-50%, -50%, 0);
   }
+
+  &:hover {
+    background: #f48a7f;
+  }
 }
 
 #left {
@@ -65,4 +69,79 @@ body {
   top: 10px;
   left: 4px;
 }
+
+.icon-paused {
+  display: none;
+
+  &:before,
+  &:after {
+    content: '';
+    width: 3px;
+    height: 12px;
+    background: #fff;
+    position: absolute;
+    top: 9px;
+  }
+
+  &:before {
+    left: 10px;
+  }
+
+  &:after {
+    right: 10px;
+  }
+}
+
+.icon-playing {
+  display: block;
+  position: absolute;
+  left: 11px;
+  top: 10px;
+  width: 0;
+  height: 0;
+  border-style: solid;
+  border-width: 5px 0 5px 10px;
+  border-color: transparent transparent transparent #fff;
+}
+
+#stop-play-btn {
+  width: 30px;
+  height: 30px;
+  position: fixed;
+  left: 50%;
+  top: 20px;
+  z-index: 2;
+  transform: translate3d(-50%, 0, 0);
+  background: $black;
+  border-radius: 50%;
+  cursor: pointer;
+
+  &:after {
+    content: '';
+    width: 10px;
+    height: 10px;
+  }
+
+  &:hover {
+    background: #444;
+  }
+
+  &.playing {
+    background: $red;
+
+    .icon-playing {
+      display: none;
+    }
+
+    .icon-paused {
+      display: block;
+    }
+
+    &:hover {
+      background: #f48a7f;
+    }
+  }
+
+}
+
 
