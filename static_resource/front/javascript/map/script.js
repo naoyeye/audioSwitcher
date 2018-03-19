@@ -2,20 +2,24 @@
 * @Author: naoyeye
 * @Date:   2018-03-19 12:45:19
 * @Last Modified by:   naoyeye
-* @Last Modified time: 2018-03-19 13:34:15
+* @Last Modified time: 2018-03-19 17:36:19
 */
 window.distribution = { weighted: 0, uniform: 1 }
 document.addEventListener('DOMContentLoaded', init());
+
 document.querySelector('.logg').innerText = 'DOMContentLoaded'
+
 async function init() {
-  document.querySelector('.logg').innerText = 'init'
-    // let map = decodeURI(location.hash.substring(1));
+    document.querySelector('.logg').innerText = 'init'
+    let map = decodeURI(window.location.hash.substring(1));
     // window.addEventListener('hashchange', () => {
-    //     location.reload();
+    //     window.location.reload();
     // });
-    let map = ''
-    if (map === '')
-        map = 'world';
+    // let map = ''
+    console.log("Map 1: ", map);
+    if (map === '') {
+      map = 'world';
+    }
 
     console.log("Map: ", map);
 
@@ -42,5 +46,5 @@ async function init() {
 }
 
 function goHome() {
-    location.href = '../';
+    window.location.href = '../';
 }

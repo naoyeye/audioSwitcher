@@ -10,6 +10,7 @@ class MapManager {
     }
 
     async getMap(key) {
+        console.log('getMap key - ', key)
         let poly;
         if (this.maps[key] === undefined) {
             poly = this.kmlsToPolygon(this.countries[key]);
@@ -17,7 +18,11 @@ class MapManager {
             let map = this.maps[key];
             if (map.type === 'collection') {
                 console.log("Map collection:", map.countries);
-                poly = this.kmlsToPolygon(...map.countries.map(country => this.countries[country]));
+                poly = this.kmlsToPolygon(...map.countries.map(country => {
+                        return this.countries[country];
+                    })
+                )
+                // });
             } else if (map.type === 'kml') {
                 let response = await fetch('../data/kml/' + map.file);
                 let kml = await response.text();
@@ -29,7 +34,7 @@ class MapManager {
 
         let area = 0;
         poly.getPaths().forEach(path => {
-            console.log('path - ', path)
+            // console.log('path - ', path)
             area += google.maps.geometry.spherical.computeArea(path);
         });
 

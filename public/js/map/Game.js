@@ -94,6 +94,12 @@ class Game {
 
         $('.logg').hide()
 
+        // setTimeout(() => {
+        //     this.saveMapToDataUrl();
+        // }, 12000);
+        
+
+
         // // 请求截图
         // console.log('请求截图');
         // setTimeout(() => {
@@ -105,6 +111,31 @@ class Game {
         //         }
         //     })
         // }, 1000);
+    }
+
+    saveMapToDataUrl() {
+
+        var element = document.querySelector("#map canvas");
+
+        // html2canvas(element).then(canvas => {
+            console.log('html2canvas!!')
+            var dataUrl= document.querySelector("#map canvas").toDataURL("image/png");
+            // document.body.appendChild(canvas);
+            // Canvas2Image.saveAsPNG(canvas);
+            $("#img-out").append(`<img src="${dataUrl}" />`);
+            // document.body.appendChild(canvas)
+        // });
+
+        // html2canvas(element, {
+        //     useCORS: true,
+        //     onrendered: function(canvas) {
+        //         var dataUrl= canvas.toDataURL("image/png");
+
+        //         // DO SOMETHING WITH THE DATAURL
+        //         // Eg. write it to the page
+        //         document.write('<img src="' + dataUrl + '"/>');
+        //     }
+        // });
     }
 
     startTimer(seconds) {
@@ -333,7 +364,8 @@ class Game {
         this.disableGuessButton();
         // this.fitMapToGeoMap();
 
-        if (++this.currentRound < this.rules.roundCount)
+        // 解除限制
+        // if (++this.currentRound < this.rules.roundCount)
             this.preloadNextMap();
 
         this.roundElement.innerHTML = `Round: <b>${this.currentRound}/${this.rules.roundCount}</b>`;
@@ -477,6 +509,7 @@ class Game {
         this.mapLoaded = false;
         this.streetview.randomValidLocation(this.zoom).then(next => {
             this.nextDestination = next;
+            console.log('preloadNextMap this.nextDestination - ', this.nextDestination)
             this.mapLoaded = true;
             this.fire('preload');
         });

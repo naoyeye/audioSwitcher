@@ -29,6 +29,8 @@ class MapApp {
           map = 'world';
         }
 
+        alert('hahha')
+
         console.log("Map: ", map);
 
         document.querySelector('.logg').innerText = '1';

@@ -61,11 +61,19 @@ class StreetviewElement {
     }
 
     setLocation(lat, lon) {
+        console.log('setLocation')
+        // lat = 62.0939859;
+        // lon = -7.413444;
         document.querySelector('.logg').innerText = 'setLocation';
 
         if (this.panorama !== undefined) {
+            console.log(111)
+            this.panorama.setOptions({linksControl: false});
+            this.panorama.setOptions({clickToGo: false});
+            this.panorama.setOptions({scrollwheel: false});
             this.panorama.setPosition({lat: lat, lng: lon});
         } else {
+            console.log(222)
             this.panorama = new google.maps.StreetViewPanorama(
                 this.element, {
                     position: {lat: lat, lng: lon},
@@ -82,7 +90,7 @@ class StreetviewElement {
                     scrollwheel: false,
                     clickToGo: false,
                     // pov: {
-                    //     heading: 0,
+                    //     heading: 69,
                     //     pitch: 0,
                     // },
                     // zoom: 0

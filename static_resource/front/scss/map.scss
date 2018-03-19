@@ -419,3 +419,14 @@ input[type=text], input[type=password], input[type=email], input[type=number] te
 input[type='button'], input[type='submit'], a[href] {
     cursor: pointer;
 }
+
+#img-out {
+    position: absolute;
+    left: 10px;
+    top: 10px;
+    z-index: 4;
+    background: #fff;
+    width: 300px;
+    height: 300px;
+
+}
