@@ -1,8 +1,8 @@
 /*
 * @Author: hanjiyun
 * @Date:   2018-03-07 22:01:15
-* @Last Modified by:   hanjiyun
-* @Last Modified time: 2018-03-08 17:13:21
+* @Last Modified by:   naoyeye
+* @Last Modified time: 2018-03-19 13:03:06
 */
 
 var gulp = require('gulp')
@@ -90,11 +90,11 @@ gulp.task('watch-js', watchify(function(watchify) {
       .pipe(watchify({
           watch: watching,
           debug: true,
-          setup: function(bundle) {
-            bundle.transform(babelify, {
-              presets: ['es2015']
-            })
-          }
+          // setup: function(bundle) {
+          //   bundle.transform(babelify, {
+          //     presets: ['es2015']
+          //   })
+          // }
       }))
       .pipe(buffer())
       .pipe(debug())

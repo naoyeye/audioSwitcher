@@ -69,6 +69,14 @@ lean publish
 ```
 
 
+如果要装前端开发的依赖：
+
+```
+yarn add <package...> [--dev/-D]
+```
+
+安装 nodejs 的依赖包可以不用加后面的 -dev 参数
+
 -----
 
 GPL License

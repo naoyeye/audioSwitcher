@@ -6,6 +6,8 @@ var path = require('path');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 var compression = require('compression'); // 开启 gzip 压缩
+var cookieSession = require('cookie-session')
+var CONFIG = require('./config');
 
 var AV = require('leanengine');
 
@@ -14,6 +16,7 @@ require('./cloud');
 
 var app = express();
 app.disable('x-powered-by');
+
 
 //尽量在其他中间件前使用 compression
 app.use(compression());
@@ -26,12 +29,20 @@ app.set('view options', {rmWhitespace: true});
 app.use(express.static('public'));
 
 // 设置默认超时时间
-app.use(timeout('15s'));
+app.use(timeout('165s'));
 
 // 加载云引擎中间件
 app.use(AV.express());
 
 app.enable('trust proxy');
+
+app.use(cookieSession({
+  name: 'session',
+  keys: [CONFIG.cookieSession.key],
+
+  // Cookie Options
+  maxAge: CONFIG.cookieSession.maxAge
+}))
 
 // 需要重定向到 HTTPS 可去除下一行的注释。
 app.use(AV.Cloud.HttpsRedirect());
@@ -55,7 +66,7 @@ app.get('/admin', function(req, res) {
 });
 
 // 可以将一类的路由单独保存在一个文件中
-app.use('/todos', require('./routes/todos'));
+app.use('/map', require('./routes/map'));
 // app.use('/account', require('./routes/account'));
 
 app.use(function(req, res, next) {
