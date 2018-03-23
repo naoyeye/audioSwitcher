@@ -29,10 +29,18 @@ router.get('/screenshot', function(req, res, next) {
 
     fs.readFile(filename, function(err, buffer) {
       if (err) {
-        res.end(err.message);
+        // res.end(err.message);
+        res.jsonp({
+          'success': false,
+          'url': null
+        })
       } else {
-        res.setHeader('Content-Type', 'image/jpeg');
-        res.end(buffer);
+        // res.setHeader('Content-Type', 'image/jpeg');
+        // res.end(buffer);
+        res.jsonp({
+          'success': true,
+          'url': '/screenshot/map.jpg'
+        })
       }
     })
   });

@@ -3,6 +3,7 @@ var page = require('webpage').create();
 var system = require('system');
 
 page.viewportSize = { width: 2048, height: 1040 };
+page.viewportSize = { width: 1024, height: 600 };
 
 
 var requestsArray = [];
@@ -58,6 +59,7 @@ page.open(system.args[1], function (status) {
         
         return document.documentElement.outerHTML;
       })
+
       // setTimeout(() => {
         
         // console.log(content);
